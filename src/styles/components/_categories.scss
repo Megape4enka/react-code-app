@@ -1,0 +1,44 @@
+.Categories {
+  list-style: none;
+  display: flex;
+  overflow: hidden;
+  padding: 0;
+  padding-bottom: 15px;
+  margin: 0;
+  margin-top: 25px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #C3C3C6;
+
+  li {
+    position: relative;
+    display: inline-block;
+    color: #97979B;
+    padding: 0 11px;
+    margin: 0 15px;
+    cursor: pointer;
+
+    &.active {
+      color: #050510;
+      font-weight: bold;
+    }
+
+    &:last-child {
+      padding-right: 13px;
+      padding-left: 11px;
+      margin-right: 0;
+      margin-left: 15px;
+    }
+  }
+
+  .active::after {
+    content: '';
+    display: block;
+    background-color: #6534FF;
+    height: 2px;
+    width: 100%;
+
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+  }
+}
