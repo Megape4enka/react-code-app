@@ -19,14 +19,14 @@ h1 {
 
   .img-search {
     position: absolute;
-    top: 16px;
-    left: 14px;
+    top: 9px;
+    left: 20px;
   }
 
   .img-list {
     position: absolute;
-    top: 16px;
-    right: 14px;
+    top: 9px;
+    right: 20px;
     cursor: pointer;
 
     path:hover,
@@ -36,6 +36,9 @@ h1 {
   }
 
   input {
+    position: absolute;
+    top: 0px;
+    left: 20px;
     border: none;
     background-color: transparent;
     font-size: 15px;
