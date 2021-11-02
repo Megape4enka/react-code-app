@@ -23,8 +23,11 @@ h1 {
     left: 20px;
   }
 
-  .img-list {
+  .btn-sort {
     position: absolute;
+    outline: none;
+    border: none;
+    background-color: transparent;
     top: 9px;
     right: 20px;
     cursor: pointer;
@@ -37,14 +40,14 @@ h1 {
 
   input {
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 20px;
     border: none;
     background-color: transparent;
     font-size: 15px;
     font-weight: 500;
     height: 40px;
-    max-width: 1150px;
+    width: 80%;
     padding: 0;
     padding-left: 40px;
     outline: none;

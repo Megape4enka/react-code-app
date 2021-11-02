@@ -1,6 +1,6 @@
 import React from 'react'
-import Avatar from "../assets/img/ava.jpg";
-import {Link} from "react-router-dom";
+import Avatar from "../assets/img/ava.jpg"
+import {Link} from "react-router-dom"
 
 const Profile = ({cartItem}) => {
     return (

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react"
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import {Route} from "react-router-dom";
-import axios from "axios";
+import Home from "./pages/Home"
+import Profile from "./pages/Profile"
+import {Redirect, Route, Switch} from "react-router-dom"
+import axios from "axios"
 
 function App() {
 
@@ -23,12 +23,15 @@ function App() {
 
     return (
       <div className="container">
-          <Route path='/' exact>
-              <Home cartItem={cartItem} setCartItem={setCartItem}/>
-          </Route>
-          <Route path='/profile' exact >
-              <Profile cartItem={cartItem} setCartItem={setCartItem} />
-          </Route>
+          <Switch>
+              <Route path='/' exact>
+                  <Home cartItem={cartItem} setCartItem={setCartItem}/>
+              </Route>
+              <Route path='/profile' exact >
+                  <Profile cartItem={cartItem} setCartItem={setCartItem} />
+              </Route>
+              <Redirect to='/' />
+          </Switch>
       </div>
     )
 }

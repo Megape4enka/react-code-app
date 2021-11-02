@@ -1,18 +1,9 @@
 import React from 'react'
-import Search from '../../assets/img/search.png'
-import Error from '../../assets/img/error.png'
+// import Error from '../assets/img/error.png'
+import errorIcon from '../assets/img/error-icon.png'
 import {Link} from "react-router-dom"
 
-const CartItem = ({user}) => {
-    
-    // if (!users.length) {
-    //     return (
-    //         <div className='not-found'>
-    //                 <img src={Search} alt="search"/>
-    //                 <h2>Мы никого не нашли</h2>
-    //                 <p>Попробуй скорректировать запрос</p>
-    //         </div>
-    //     )
+const CartItem = (props) => {
 
 
     // if (!) {
@@ -26,7 +17,6 @@ const CartItem = ({user}) => {
     //     )
     // }
 
-
     return (
         <>
             <div className='CardItem'>
@@ -34,22 +24,21 @@ const CartItem = ({user}) => {
 
                     <div className='CardInfo'>
                         <div className="img-icon">
-                            <img src={user.avatarUrl} alt={user.firstName} />
+                            <img src={props.user.avatarUrl ? props.user.avatarUrl : errorIcon} alt={props.user.firstName} />
                         </div>
                         <div className="user-info">
-                            <h3>{user.firstName}&nbsp;{user.lastName}&nbsp;<span>{user.userTag}</span></h3>
-                            <p>{user.position}</p>
+                            <h3>{props.user.firstName}&nbsp;{props.user.lastName}&nbsp;<span>{props.user.userTag}</span></h3>
+                            <p>{props.user.position}</p>
                         </div>
                     </div>
                 </Link>
-                {/*<div className="date">*/}
-                {/*    <p>{user.birthday}</p>*/}
-                {/*</div>*/}
+                <div className="date">
+                    <p>{props.user.birthday}</p>
+                </div>
             </div>
 
-
             {/*<div className="nearest-date">*/}
-            {/*    <h2>2012</h2>*/}
+            {/*    <h2>2022</h2>*/}
             {/*</div>*/}
         </>
     )
