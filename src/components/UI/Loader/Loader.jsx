@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LoadingBlock = () => {
+const Loader = () => {
     return (
         <div>
 
@@ -8,4 +8,4 @@ const LoadingBlock = () => {
     )
 }
 
-export default LoadingBlock
+export default Loader
