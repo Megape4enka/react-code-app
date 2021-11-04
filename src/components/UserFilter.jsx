@@ -13,10 +13,11 @@ const UserFilter = ({filter, setFilter}) => {
             <RadioSort
                 value={filter.sort}
                 onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
-                options={[
-                    {value: 'firstName', name: 'По алфавиту'},
-                    {value: 'birthday', name: 'По дате'}
-                ]}
+                setFilter={setFilter}
+                // options={[
+                //     {value: 'firstName', name: 'По алфавиту'},
+                //     {value: 'birthday', name: 'По дате'}
+                // ]}
             />
         </div>
     )

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Close from "../assets/img/close.png"
 
-const RadioSort = ({value, options, onChange}) => {
+const RadioSort = ({ value, onChange, setFilter }) => {
     const [modal, setModal] = useState(false)
 
     const toggleModal = () => {
@@ -17,17 +17,17 @@ const RadioSort = ({value, options, onChange}) => {
             </button>
 
 
-            <select
-                style={{position: 'absolute', left: '300px'}}
-                value={value}
-                onChange={event => onChange(event.target.value)}
-            >
-                {options.map(option =>
-                    <option key={option.value} value={option.value} >
-                        {option.name}
-                    </option>
-                )}
-            </select>
+            {/*<select*/}
+            {/*    style={{position: 'absolute', left: '300px'}}*/}
+            {/*    value={value}*/}
+            {/*    onChange={event => onChange(event.target.value)}*/}
+            {/*>*/}
+            {/*    {options.map(option =>*/}
+            {/*        <option key={option.value} value={option.value} >*/}
+            {/*            {option.name}*/}
+            {/*        </option>*/}
+            {/*    )}*/}
+            {/*</select>*/}
 
             {modal && (
                 <div className='overlay' onClick={toggleModal}>
@@ -37,14 +37,16 @@ const RadioSort = ({value, options, onChange}) => {
                             <img onClick={toggleModal} src={Close} alt="close"/>
                         </div>
 
-                        <div className='label' >
-                            <input onChange={() => {}} type="radio" name='sort' id='alphabet' checked/>
-                            <label htmlFor="alphabet">По алфавиту</label>
-                        </div>
+                        <div onChange={event => onChange(event.target.value)}>
+                            <div className='label'>
+                                <input onClick={toggleModal} onChange={(e) => {setFilter(e.target.value)}} value='firstName' type="radio" id='firstName' checked={value === 'firstName'}/>
+                                <label htmlFor="firstName">По алфавиту</label>
+                            </div>
 
-                        <div className='label' >
-                            <input onChange={() => {}} type="radio" name='sort' id='birthday'/>
-                            <label htmlFor="birthday">По дню рождения</label>
+                            <div className='label' >
+                                <input onClick={toggleModal} onChange={(e) => {setFilter(e.target.value)}} value='birthday' type="radio" id='birthday' checked={value === 'birthday'}/>
+                                <label htmlFor="birthday">По дню рождения</label>
+                            </div>
                         </div>
                     </div>
                 </div>

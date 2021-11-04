@@ -4,7 +4,7 @@ import CartList from "../components/CartList"
 import UserFilter from "../components/UserFilter"
 
 const Home = ({cartItem}) => {
-    const [filter, setFilter] = useState({sort: '', query: ''})
+    const [filter, setFilter] = useState({sort: 'firstName', query: ''})
 
     const sortedPosts = useMemo(() => {
         if(filter.sort) {
