@@ -1,26 +1,16 @@
 import React from 'react'
-// import Error from '../assets/img/error.png'
 import errorIcon from '../assets/img/error-icon.png'
-import {Link} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 
 const CartItem = (props) => {
 
-
-    // if (!) {
-    //     return (
-    //         <div className='critical-error'>
-    //             <img src={Error} alt="error"/>
-    //             <h2>Какой-то сверхразум все сломал</h2>
-    //             <p>Постораемся быстро починить</p>
-    //             <a href="#">Пробовать снова</a>
-    //         </div>
-    //     )
-    // }
+    const router = useHistory()
 
     return (
         <>
             <div className='CardItem'>
-                <Link to='/profile'>
+
+                <div onClick={() => router.push(`/profile/${props.user.id}`)}>
 
                     <div className='CardInfo'>
                         <div className="img-icon">
@@ -31,13 +21,11 @@ const CartItem = (props) => {
                             <p>{props.user.position}</p>
                         </div>
                     </div>
-                </Link>
+                </div>
                 <div className="date">
                     <p>{props.user.birthday}</p>
                 </div>
             </div>
-
-
 
             {/*<div className="nearest-date">*/}
             {/*    <h2>2022</h2>*/}

@@ -14,10 +14,6 @@ const UserFilter = ({filter, setFilter}) => {
                 value={filter.sort}
                 onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
                 setFilter={setFilter}
-                // options={[
-                //     {value: 'firstName', name: 'По алфавиту'},
-                //     {value: 'birthday', name: 'По дате'}
-                // ]}
             />
         </div>
     )

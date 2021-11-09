@@ -3,6 +3,7 @@ import CartItem from "./CartItem"
 import Search from "../assets/img/search.png"
 
 const CartList = ({users}) => {
+
     if (!users.length) {
         return (
             <div className='CardList'>

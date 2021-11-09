@@ -16,19 +16,6 @@ const RadioSort = ({ value, onChange, setFilter }) => {
                 </svg>
             </button>
 
-
-            {/*<select*/}
-            {/*    style={{position: 'absolute', left: '300px'}}*/}
-            {/*    value={value}*/}
-            {/*    onChange={event => onChange(event.target.value)}*/}
-            {/*>*/}
-            {/*    {options.map(option =>*/}
-            {/*        <option key={option.value} value={option.value} >*/}
-            {/*            {option.name}*/}
-            {/*        </option>*/}
-            {/*    )}*/}
-            {/*</select>*/}
-
             {modal && (
                 <div className='overlay' onClick={toggleModal}>
                     <div className='sort-popup' onClick={e => e.stopPropagation()}>

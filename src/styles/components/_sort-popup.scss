@@ -6,7 +6,6 @@
   width: 100%;
   height: 100%;
   background-color: rgba(5, 5, 16, 0.16);
-  transition: all .3s linear;
 }
 
 .sort-popup {
@@ -18,7 +17,6 @@
   background: #ffffff;
   border-radius: 20px;
   text-align: center;
-  transition: .2s ease-in-out;
   transform: translate(-50%, -50%);
 
   .title {
