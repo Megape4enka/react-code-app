@@ -1,8 +1,22 @@
 import React from 'react'
 import CartItem from "./CartItem"
 import Search from "../assets/img/search.png"
+import Error from "../assets/img/error.png";
 
-const CartList = ({users}) => {
+const CartList = ({users, useError}) => {
+
+    if (useError) {
+        return (
+        <div className='CardList'>
+            <div className='critical-error'>
+                <img src={Error} alt="error"/>
+                <h2>Какой-то сверхразум все сломал</h2>
+                <p>Постораемся быстро починить</p>
+                <a href="#">Пробовать снова</a>
+            </div>
+        </div>
+        )
+    }
 
     if (!users.length) {
         return (

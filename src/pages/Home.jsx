@@ -47,20 +47,9 @@ const Home = ({cartItem, userError, isUsersLoading}) => {
             <UserFilter filter={filter} setFilter={setFilter} />
             <Categories />
 
-            {userError &&
-                <div className='CardList'>
-                    <div className='critical-error'>
-                        <img src={Error} alt="error"/>
-                        <h2>Какой-то сверхразум все сломал</h2>
-                        <p>Постораемся быстро починить</p>
-                        <a href="#">Пробовать снова</a>
-                    </div>
-                </div>
-            }
-
             {isUsersLoading
                 ? <Loader />
-                : <CartList users={sortedAndSearchedPosts} />
+                : <CartList users={sortedAndSearchedPosts} useError={userError} />
             }
         </div>
     )
