@@ -33,8 +33,9 @@ h1 {
     cursor: pointer;
 
     path:hover,
-    path:active {
-      fill: #050510;
+    path:active,
+    path:focus {
+      fill: #6534FF;
     }
   }
 
