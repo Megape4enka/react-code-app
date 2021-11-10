@@ -2,9 +2,8 @@ import React, {useMemo, useState} from 'react'
 import Categories from '../components/Categories'
 import CartList from '../components/CartList'
 import UserFilter from '../components/UserFilter'
-import Loader from "../components/UI/Loader/Loader"
 
-const Home = ({cartItem, userError, isUsersLoading}) => {
+const Home = ({cartItem, userError, isLoading}) => {
     const [filter, setFilter] = useState({sort: 'firstName', query: ''})
 
     const sortedPosts = useMemo(() => {
@@ -27,11 +26,7 @@ const Home = ({cartItem, userError, isUsersLoading}) => {
             <h1>Поиск</h1>
             <UserFilter filter={filter} setFilter={setFilter} />
             <Categories />
-
-            {isUsersLoading
-                ? <Loader />
-                : <CartList users={sortedAndSearchedPosts} useError={userError} />
-            }
+            <CartList isLoading={isLoading} users={sortedAndSearchedPosts} useError={userError} />
         </div>
     )
 }

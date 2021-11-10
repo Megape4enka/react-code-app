@@ -9,7 +9,7 @@ function App() {
 
     const [cartItem, setCartItem] = useState([])
 
-    const [fetchUsers, isUsersLoading, userError] = useFetching(async () => {
+    const [fetchUsers, isLoading, userError] = useFetching(async () => {
         const users = await UserService.getAll()
         setCartItem(users)
     })
@@ -40,7 +40,7 @@ function App() {
       <div className="container">
           <Switch>
               <Route path='/' exact>
-                  <Home userError={userError} isUsersLoading={isUsersLoading} cartItem={cartItem} setCartItem={setCartItem}/>
+                  <Home userError={userError} isLoading={isLoading} cartItem={cartItem} setCartItem={setCartItem}/>
               </Route>
               <Route path='/profile/:id' exact >
                   <Profile cartItem={cartItem} setCartItem={setCartItem} />
