@@ -1,34 +1,65 @@
-import React, {useMemo, useState} from 'react'
-import Categories from '../components/Categories'
-import CartList from '../components/CartList'
-import UserFilter from '../components/UserFilter'
+import React, { useMemo, useState } from "react";
+import Categories from "../components/Categories";
+import CartList from "../components/CartList";
+import UserFilter from "../components/UserFilter";
+import { DEFAULT_CATEGORY } from "../constants/categories";
+import { getNormalizeDate } from "../utils/getNormalizeDate";
 
-const Home = ({cartItem, userError, isLoading}) => {
-    const [filter, setFilter] = useState({sort: 'firstName', query: ''})
+export const Home = ({ users, userError, isLoading }) => {
+  const [filter, setFilter] = useState({ sort: "firstName", query: "" });
+  const [activeCategory, setActiveCategory] = useState("all");
 
-    const sortedPosts = useMemo(() => {
-        if(filter.sort) {
-            return [...cartItem].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]))
-        }
-        return cartItem
-    }, [filter.sort, cartItem])
+  const sortedPosts = useMemo(() => {
+    if (filter.sort === "birthday") {
+      return [...users].sort((a, b) => {
+        const dateA = new Date(getNormalizeDate(a.birthday));
+        const dateB = new Date(getNormalizeDate(b.birthday));
 
-    const sortedAndSearchedPosts = useMemo(() => {
-        return sortedPosts.filter(post =>
-            post.userTag.toLowerCase().includes(filter.query) ||
-            post.lastName.toLowerCase().includes(filter.query) ||
-            post.firstName.toLowerCase().includes(filter.query)
-        )
-    }, [filter.query, sortedPosts])
+        return dateA - dateB;
+      });
+    }
 
-    return (
-        <div className='home'>
-            <h1>Поиск</h1>
-            <UserFilter filter={filter} setFilter={setFilter} />
-            <Categories />
-            <CartList isLoading={isLoading} users={sortedAndSearchedPosts} useError={userError} />
-        </div>
-    )
-}
+    if (filter.sort) {
+      return [...users].sort((a, b) =>
+        a[filter.sort].localeCompare(b[filter.sort])
+      );
+    }
+    return users;
+  }, [filter.sort, users]);
 
-export default Home
+  const sortedAndSearchedPosts = useMemo(() => {
+    return sortedPosts.filter(
+      (post) =>
+        post.userTag.toLowerCase().includes(filter.query) ||
+        post.lastName.toLowerCase().includes(filter.query) ||
+        post.firstName.toLowerCase().includes(filter.query)
+    );
+  }, [filter.query, sortedPosts]);
+
+  const sortedByTabPosts = useMemo(() => {
+    return sortedAndSearchedPosts.filter((i) => {
+      const isAll = activeCategory === DEFAULT_CATEGORY;
+      if (isAll || i.department === activeCategory) return i;
+    });
+  }, [sortedAndSearchedPosts, activeCategory]);
+
+  return (
+    <div className="home">
+      <h1>Поиск</h1>
+      <UserFilter filter={filter} setFilter={setFilter} />
+      <Categories
+        activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
+      />
+      <CartList
+        sortPosts={sortedPosts}
+        filter={filter}
+        isLoading={isLoading}
+        users={sortedByTabPosts}
+        useError={userError}
+      />
+    </div>
+  );
+};
+
+export default Home;

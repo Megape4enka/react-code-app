@@ -1,22 +1,35 @@
-import React from 'react'
-import SearchInput from "./SearchInput"
-import RadioSort from "./RadioSort"
+import React, { useCallback } from "react";
+import SearchInput from "./SearchInput";
+import RadioSort from "./RadioSort";
 
-const UserFilter = ({filter, setFilter}) => {
+const UserFilter = ({ filter, setFilter }) => {
+  const handleChangeSearch = useCallback(
+    ({ value }) => {
+      setFilter({ ...filter, query: value });
+    },
+    [filter]
+  );
 
-    return (
-        <div className="search">
-            <SearchInput
-                value={filter.query}
-                onChange={e => setFilter({...filter, query: e.target.value})}
-            />
-            <RadioSort
-                value={filter.sort}
-                onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
-                setFilter={setFilter}
-            />
-        </div>
-    )
-}
+  const handleChangeSort = useCallback(
+    (selectedSort) => {
+      setFilter({ ...filter, sort: selectedSort });
+    },
+    [filter]
+  );
 
-export default UserFilter
+  return (
+    <div className="search">
+      <SearchInput
+        value={filter.query}
+        onChange={({ target }) => handleChangeSearch(target)}
+      />
+      <RadioSort
+        value={filter.sort}
+        onChange={(selectedSort) => handleChangeSort(selectedSort)}
+        setFilter={setFilter}
+      />
+    </div>
+  );
+};
+
+export default UserFilter;

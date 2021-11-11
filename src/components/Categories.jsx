@@ -1,18 +1,20 @@
-import React from 'react'
+import React from "react";
+import { CATEGORIES } from "../constants/categories";
 
-const Categories = () => {
-    return (
-        <div>
-            <ul className='Categories'>
-                <li className='active'>Все</li>
-                <li>Designer</li>
-                <li>Analysts</li>
-                <li>Managers</li>
-                <li>iOS</li>
-                <li>Android</li>
-            </ul>
-        </div>
-    )
-}
+const Categories = ({ activeCategory, setActiveCategory }) => {
+  return (
+    <ul className="Categories">
+      {Object.keys(CATEGORIES).map((category) => (
+        <li
+          className={activeCategory === category ? "active" : ""}
+          key={category}
+          onClick={() => setActiveCategory(category)}
+        >
+          {CATEGORIES[category]}
+        </li>
+      ))}
+    </ul>
+  );
+};
 
-export default Categories
+export default Categories;
