@@ -8,31 +8,32 @@ const CartItem = ({ user, filter }) => {
     const normalizeDate = getNormalizeDate(user.birthday);
     let refactorDate = new Date(normalizeDate).toLocaleDateString("ru-RU", {
       day: "numeric",
-      month: "long",
+      month: "short",
     });
-    return refactorDate;
+    return refactorDate.split(".").slice(0, -1).join(" ");
   };
 
   const router = useHistory();
 
   return (
     <>
-      <div className="CardItem">
-        <div onClick={() => router.push(`/profile/${user.id}`)}>
-          <div className="CardInfo">
-            <div className="img-icon">
-              <img
-                src={user.avatarUrl ? user.avatarUrl : errorIcon}
-                alt={user.firstName}
-              />
-            </div>
-            <div className="user-info">
-              <h3>
-                {user.firstName}&nbsp;{user.lastName}&nbsp;
-                <span>{user.userTag}</span>
-              </h3>
-              <p>{user.position}</p>
-            </div>
+      <div
+        className="user-item"
+        onClick={() => router.push(`/profile/${user.id}`)}
+      >
+        <div className="user-item-info">
+          <div className="img-icon">
+            <img
+              src={user.avatarUrl ? user.avatarUrl : errorIcon}
+              alt={user.firstName}
+            />
+          </div>
+          <div className="user-info">
+            <h3>
+              {user.firstName}&nbsp;{user.lastName}&nbsp;
+              <span>{user.userTag}</span>
+            </h3>
+            <p>{user.position}</p>
           </div>
         </div>
         {filter.sort === "birthday" && (
@@ -41,10 +42,6 @@ const CartItem = ({ user, filter }) => {
           </div>
         )}
       </div>
-
-      {/*<div className="nearest-date">*/}
-      {/*    <h2>2022</h2>*/}
-      {/*</div>*/}
     </>
   );
 };

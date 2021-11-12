@@ -1,18 +1,18 @@
-.CardList {
+.users-list {
   display: flex;
   margin: 0 15px;
   flex-direction: column;
   align-items: flex-start;
   min-height: 600px;
 
-  .CardItem {
+  .user-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 16px;
 
-    .CardInfo {
+    &-info {
       display: flex;
       align-items: center;
       justify-content: center;

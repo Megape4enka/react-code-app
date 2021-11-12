@@ -1,64 +1,15 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import { declination } from "../utils/getNormalizeAge";
+import { userAge } from "../utils/getCountAge";
+import { normalizeDate } from "../utils/getDateRU";
 
 const Profile = ({ users }) => {
   const { id } = useParams();
   const user = users.find((user) => user.id.toString() === id);
 
-  const userAge = (age) => {
-    let dateNow = new Date();
-    let userBirthday = new Date(age);
-
-    let t = userBirthday.getTime() / 86400000 / 365;
-    let dateNowMills = dateNow.getTime() / 86400000 / 365;
-    return Math.abs(Math.round(t - dateNowMills));
-  };
-
-  const declination = (age) => {
-    const num = age % 10;
-    if (num === 1) return "год";
-    if (
-      age === 5 ||
-      age === 6 ||
-      age === 7 ||
-      age === 8 ||
-      age === 9 ||
-      age === 10 ||
-      age === 11 ||
-      age === 12 ||
-      age === 13 ||
-      age === 14 ||
-      age === 15 ||
-      age === 16 ||
-      age === 17 ||
-      age === 18 ||
-      age === 19 ||
-      age === 20
-    )
-      return "лет";
-    if (num === 2 || num === 3 || num === 4) return "года";
-    if (
-      num === 0 ||
-      num === 5 ||
-      num === 6 ||
-      num === 7 ||
-      num === 8 ||
-      num === 9
-    )
-      return "лет";
-  };
-
-  const normalizeDate = (date) => {
-    let refactorDate = new Date(date).toLocaleDateString("ru-RU", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-    return refactorDate.split(" ").slice(0, -1).join(" ");
-  };
-
   return (
-    <div className="Profile">
+    <div className="profile">
       <Link to="/">
         <svg
           width="24"

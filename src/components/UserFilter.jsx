@@ -7,14 +7,14 @@ const UserFilter = ({ filter, setFilter }) => {
     ({ value }) => {
       setFilter({ ...filter, query: value });
     },
-    [filter]
+    [filter, setFilter]
   );
 
   const handleChangeSort = useCallback(
     (selectedSort) => {
       setFilter({ ...filter, sort: selectedSort });
     },
-    [filter]
+    [filter, setFilter]
   );
 
   return (

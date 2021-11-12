@@ -3,7 +3,7 @@ import { CATEGORIES } from "../constants/categories";
 
 const Categories = ({ activeCategory, setActiveCategory }) => {
   return (
-    <ul className="Categories">
+    <ul className="categories">
       {Object.keys(CATEGORIES).map((category) => (
         <li
           className={activeCategory === category ? "active" : ""}
