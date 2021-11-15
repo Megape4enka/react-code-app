@@ -23,6 +23,7 @@ export const Home = ({ users, userError, isLoading }) => {
         a[filter.sort].localeCompare(b[filter.sort])
       );
     }
+
     return users;
   }, [filter.sort, users]);
 
