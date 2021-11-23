@@ -1,4 +1,5 @@
 import React from "react";
+import ErrorIcon from "../assets/img/error-icon.png";
 import { Link, useParams } from "react-router-dom";
 import { declination } from "../utils/getNormalizeAge";
 import { userAge } from "../utils/getCountAge";
@@ -26,7 +27,10 @@ const Profile = ({ users }) => {
       <div className="info">
         <div className="info-container">
           <div className="img-icon">
-            <img src={user.avatarUrl} alt="avatar" />
+            <img
+              src={user.avatarUrl ? user.avatarUrl : ErrorIcon}
+              alt="avatar"
+            />
           </div>
           <div className="user-info">
             <h3>
